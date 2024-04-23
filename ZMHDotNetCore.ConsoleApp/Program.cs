@@ -10,6 +10,10 @@ AdoDotNetCRUD adoCRUD = new AdoDotNetCRUD();
 //adoCRUD.update(1, "titleUU", "ContentBlah", "unknown");
 //adoCRUD.update(13, "Second_title", "Content_letter", "the only one");
 //adoCRUD.delete(12);
-adoCRUD.edit(3);
+//adoCRUD.edit(3);
+
+dapperExample CRUD = new dapperExample();
+
+CRUD.run();
  
 Console.ReadKey();

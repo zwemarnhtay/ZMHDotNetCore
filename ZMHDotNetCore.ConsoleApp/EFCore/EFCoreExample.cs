@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZMHDotNetCore.ConsoleApp
+namespace ZMHDotNetCore.ConsoleApp.EFCore
 {
     internal class EFCoreExample
     {
@@ -82,10 +82,10 @@ namespace ZMHDotNetCore.ConsoleApp
 
         private void delete(int id)
         {
-            appDBContext db = new appDBContext();  
+            appDBContext db = new appDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
-            if(item == null)
+            if (item == null)
             {
                 Console.WriteLine("no data found \n");
             }

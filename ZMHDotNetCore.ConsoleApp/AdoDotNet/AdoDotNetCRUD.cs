@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace ZMHDotNetCore.ConsoleApp
+namespace ZMHDotNetCore.ConsoleApp.AdoDotNet
 {
     internal class AdoDotNetCRUD
     {
@@ -20,14 +20,14 @@ namespace ZMHDotNetCore.ConsoleApp
             Password = "sa@123",                  //server password
         };
 
-       public void read()  //void => no return
+        public void read()  //void => no return
         {
             SqlConnection connection = new SqlConnection(_stringBuilder.ConnectionString);
 
             connection.Open();
             //start code for CRUD here
 
-            String query = "select * from tbl_Blog";
+            string query = "select * from tbl_Blog";
             SqlCommand cmd = new SqlCommand(query, connection);    //
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -61,7 +61,7 @@ namespace ZMHDotNetCore.ConsoleApp
                              @BlogAuthor,
                              @BlogContent)";
             SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@BlogTitle",  title); // insert title
+            command.Parameters.AddWithValue("@BlogTitle", title); // insert title
             command.Parameters.AddWithValue("@BlogAuthor", author);
             command.Parameters.AddWithValue("@BlogContent", content);
 
@@ -73,7 +73,7 @@ namespace ZMHDotNetCore.ConsoleApp
             Console.WriteLine(msg);
         }
 
-        public void update(int id, string title, string content, string author) 
+        public void update(int id, string title, string content, string author)
         {
             SqlConnection connection = new SqlConnection(_stringBuilder.ConnectionString);
             connection.Open();
@@ -115,12 +115,12 @@ namespace ZMHDotNetCore.ConsoleApp
         }
 
         public void edit(int id)
-        { 
+        {
             SqlConnection connection = new SqlConnection(_stringBuilder.ConnectionString);
 
             connection.Open();
 
-            String query = "select * from tbl_Blog where BlogId = @BlogId";
+            string query = "select * from tbl_Blog where BlogId = @BlogId";
             SqlCommand cmd = new SqlCommand(query, connection);    //
             cmd.Parameters.AddWithValue("@BlogId", id);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);

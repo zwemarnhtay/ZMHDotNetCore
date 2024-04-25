@@ -6,8 +6,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZMHDotNetCore.ConsoleApp.Services;
 
-namespace ZMHDotNetCore.ConsoleApp
+namespace ZMHDotNetCore.ConsoleApp.Dapper
 {
     internal class dapperExample
     {
@@ -21,10 +22,10 @@ namespace ZMHDotNetCore.ConsoleApp
             //update(1, "updated title", "unknown", "updated content");
         }
 
-        private void read() 
+        private void read()
         {
-          using  IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-          var list =  db.Query("select * from tbl_blog").ToList(); //var => List<blogDTO>
+            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            var list = db.Query("select * from tbl_blog").ToList(); //var => List<blogDTO>
 
             foreach (var item in list)
             {
@@ -34,7 +35,7 @@ namespace ZMHDotNetCore.ConsoleApp
                 Console.WriteLine(item.BlogContent);
                 Console.WriteLine("-------->>>");
             }
-            
+
         }
 
         private void find(int id)
@@ -42,10 +43,10 @@ namespace ZMHDotNetCore.ConsoleApp
             using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
             var item = db.Query("select * from tbl_blog where BlogId = @BlogId", new blogDTO { BlogId = id }).FirstOrDefault();
 
-            if(item == null)
+            if (item == null)
             {
                 Console.WriteLine("not found!");
-                return; 
+                return;
             }
 
             Console.WriteLine(item.BlogId);
@@ -54,7 +55,7 @@ namespace ZMHDotNetCore.ConsoleApp
             Console.WriteLine(item.BlogContent);
         }
 
-        private void create(string title,  string author, string content) 
+        private void create(string title, string author, string content)
         {
             using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
 
@@ -67,7 +68,7 @@ namespace ZMHDotNetCore.ConsoleApp
                              @BlogAuthor,
                              @BlogContent)";
 
-            var item = new blogDTO{BlogTitle = title, BlogAuthor = author, BlogContent = content};
+            var item = new blogDTO { BlogTitle = title, BlogAuthor = author, BlogContent = content };
 
             var result = db.Execute(query, item); //instead of var => int
 

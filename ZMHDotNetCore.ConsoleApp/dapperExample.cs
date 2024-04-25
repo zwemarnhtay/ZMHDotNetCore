@@ -14,7 +14,7 @@ namespace ZMHDotNetCore.ConsoleApp
         public void run()
         {
             //find(2);
-            //delete(2);
+            //delete(2); 
             read();
             //find(1);
             //create("titleBlah", "blahAuthor", "blah blah");
@@ -40,7 +40,7 @@ namespace ZMHDotNetCore.ConsoleApp
         private void find(int id)
         {
             using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            var item = db.Query("select * from tbl_blog where BlogId = @BlogId", new blogDTO { BlogID = id }).FirstOrDefault();
+            var item = db.Query("select * from tbl_blog where BlogId = @BlogId", new blogDTO { BlogId = id }).FirstOrDefault();
 
             if(item == null)
             {
@@ -85,7 +85,7 @@ namespace ZMHDotNetCore.ConsoleApp
                               ,[BlogContent] = @BlogContent
                          WHERE BlogId = @BlogId";
 
-            var item = new blogDTO { BlogID = id, BlogTitle = title, BlogAuthor = author, BlogContent = content };
+            var item = new blogDTO { BlogId = id, BlogTitle = title, BlogAuthor = author, BlogContent = content };
 
             var result = db.Execute(query, item);
 
@@ -101,7 +101,7 @@ namespace ZMHDotNetCore.ConsoleApp
 
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
 
-            var result = db.Execute(query, new blogDTO { BlogID = id });
+            var result = db.Execute(query, new blogDTO { BlogId = id });
 
             var msg = result > 0 ? "success" : "failed";
             Console.WriteLine(msg);

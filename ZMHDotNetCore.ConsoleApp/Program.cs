@@ -12,8 +12,9 @@ AdoDotNetCRUD adoCRUD = new AdoDotNetCRUD();
 //adoCRUD.delete(12);
 //adoCRUD.edit(3);
 
-dapperExample CRUD = new dapperExample();
-
+//dapperExample CRUD = new dapperExample();
+//CRUD.run();
+EFCoreExample CRUD = new EFCoreExample();
 CRUD.run();
  
 Console.ReadKey();

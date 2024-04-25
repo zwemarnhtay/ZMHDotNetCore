@@ -15,6 +15,7 @@ namespace ZMHDotNetCore.ConsoleApp
             InitialCatalog = "DotNetTrainingBt4",     // database name
             UserID = "sa",                         //user name
             Password = "sa@123",                  //server password
+            TrustServerCertificate = true,
         };
     }
 }

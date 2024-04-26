@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZMHDotNetCore.ConsoleApp.DTO;
 
 namespace ZMHDotNetCore.ConsoleApp.EFCore
 {
@@ -66,7 +67,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
             appDBContext db = new appDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
-            if (item == null)
+            if (item is null)
             {
                 Console.WriteLine("not found! \n");
             }
@@ -85,12 +86,12 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
             appDBContext db = new appDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
-            if (item == null)
+            if (item is null)
             {
                 Console.WriteLine("no data found \n");
             }
 
-            db.Remove(item);
+            db.Blogs.Remove(item);
             int result = db.SaveChanges();
             string msg = result > 0 ? "deleted success \n" : "failed \n";
             Console.WriteLine(msg);

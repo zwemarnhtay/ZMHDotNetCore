@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZMHDotNetCore.ConsoleApp.DTO;
 using ZMHDotNetCore.ConsoleApp.Services;
 
 namespace ZMHDotNetCore.ConsoleApp.Dapper

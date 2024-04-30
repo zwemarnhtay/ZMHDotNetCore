@@ -104,6 +104,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
 
             var result = db.Execute(query, new blogDTO { BlogId = id });
+            
 
             var msg = result > 0 ? "success" : "failed";
             Console.WriteLine(msg);

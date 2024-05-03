@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RestAPI.Db;
-using RestAPI.Models;
 using System.Reflection.Metadata;
+using ZMHDotNetCore.RestAPI.Models;
 
-namespace RestAPI.Controllers
+namespace ZMHDotNetCore.RestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

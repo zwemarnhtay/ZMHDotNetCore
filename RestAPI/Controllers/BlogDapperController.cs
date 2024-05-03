@@ -1,10 +1,9 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RestAPI;
-using RestAPI.Models;
 using System.Data;
 using System.Data.SqlClient;
+using ZMHDotNetCore.RestAPI.Models;
 
 namespace ZMHDotNetCore.RestAPI.Controllers
 {
@@ -98,7 +97,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
 
             if(condition.Length == 0)
             {
-                return NotFound("No data found! ooo");
+                return NotFound("No data found!");
             }
 
             condition = condition.Substring(0, condition.Length - 2);

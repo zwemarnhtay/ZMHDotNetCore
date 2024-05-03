@@ -25,7 +25,7 @@ namespace ZMHDotNetCore.ConsoleApp.AdoDotNet
             SqlConnection connection = new SqlConnection(_stringBuilder.ConnectionString);
 
             connection.Open();
-            //start code for CRUD here
+            //start code for CRUD here  
 
             string query = "select * from tbl_Blog";
             SqlCommand cmd = new SqlCommand(query, connection);    //

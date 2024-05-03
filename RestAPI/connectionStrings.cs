@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestAPI
+namespace ZMHDotNetCore.RestAPI
 {
     internal static class connectionStrings
     {

@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RestAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZMHDotNetCore.RestAPI;
+using ZMHDotNetCore.RestAPI.Models;
 
 namespace RestAPI.Db
 {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestAPI.Models;
+namespace ZMHDotNetCore.RestAPI.Models;
 
 [Table("Tbl_Blog")]
 

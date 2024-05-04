@@ -183,7 +183,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
             string patchQuery = $@"UPDATE [dbo].[Tbl_Blog]
                            SET {condition}
                          WHERE BlogId = @BlogId";
-            //blog.BlogId = id;
+            //blog.BlogId = id; 
 
             SqlCommand cmd = new SqlCommand(patchQuery, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);

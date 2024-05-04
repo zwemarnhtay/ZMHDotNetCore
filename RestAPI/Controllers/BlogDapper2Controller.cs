@@ -12,7 +12,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     [ApiController]
     public class BlogDapper2Controller : ControllerBase
     {
-        public readonly DapperServices _dapperService = new DapperServices(connectionStrings.stringBuilder.ConnectionString);
+        private readonly DapperServices _dapperService = new DapperServices(connectionStrings.stringBuilder.ConnectionString);
         [HttpGet]
         public IActionResult getBlogs()
         {

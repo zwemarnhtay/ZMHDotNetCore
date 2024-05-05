@@ -60,18 +60,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult updateBlog(int id, blogModel blog)
         {
-            SqlConnection connection = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            connection.Open();
-
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
-            SqlCommand findCmd = new SqlCommand(findQuery, connection);
-            findCmd.Parameters.AddWithValue("@BlogId", id);
-            SqlDataAdapter adapter = new SqlDataAdapter(findCmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            connection.Close();
-
-            if (dt.Rows.Count == 0) return NotFound("no data to update");
+            var isExist = _adoDotNetServices.Query<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
+            if (isExist == null) return NotFound("no data to update");
 
             string updateQuery = @"UPDATE [dbo].[Tbl_Blog]
                            SET [BlogTitle] = @BlogTitle
@@ -79,6 +70,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
                               ,[BlogContent] = @BlogContent
                          WHERE BlogId = @BlogId";
             var result = _adoDotNetServices.Execute(updateQuery,
+                new AdoDotNetParameters("@BlogId", id),
                 new AdoDotNetParameters("@BlogTitle", blog.BlogTitle),
                 new AdoDotNetParameters("@BlogAuthor", blog.BlogAuthor),
                 new AdoDotNetParameters("@BlogContent", blog.BlogContent)
@@ -92,31 +84,28 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         [HttpPatch("{id}")]
         public IActionResult patchBlog(int id, blogModel blog) 
         {
-            SqlConnection connection = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            connection.Open();
-
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
-            SqlCommand findCmd = new SqlCommand(findQuery, connection);
-            findCmd.Parameters.AddWithValue("@BlogId", id);
-            SqlDataAdapter adapter = new SqlDataAdapter(findCmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-
-            if (dt.Rows.Count == 0) return NotFound("no data to update");
+            var isExist = _adoDotNetServices.Query<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
+            if (isExist == null) return NotFound("no data to patch");
 
             string condition = string.Empty;
+            List<AdoDotNetParameters> parameters = new List<AdoDotNetParameters>();
+            parameters.Add(new AdoDotNetParameters("@BlogId", id));
 
             if (!string.IsNullOrEmpty(blog.BlogTitle))
             {
                 condition += " [BlogTitle] = @BlogTitle, ";
+                parameters.Add(new AdoDotNetParameters("@BlogTitle", blog.BlogTitle));
             }
             if (!string.IsNullOrEmpty(blog.BlogContent))
             {
                 condition += " [BlogContent] = @BlogContent, ";
+                parameters.Add(new AdoDotNetParameters("@BlogContent", blog.BlogContent));
             }
             if (!string.IsNullOrEmpty(blog.BlogAuthor))
             {
                 condition += " [BlogAuthor] = @BlogAuthor, ";
+                parameters.Add(new AdoDotNetParameters("@BlogAuthor", blog.BlogAuthor));
             }
 
             if (condition.Length == 0)
@@ -130,31 +119,12 @@ namespace ZMHDotNetCore.RestAPI.Controllers
             string patchQuery = $@"UPDATE [dbo].[Tbl_Blog]
                            SET {condition}
                          WHERE BlogId = @BlogId";
-            //blog.BlogId = id; 
-
-
-            SqlCommand cmd = new SqlCommand(patchQuery, connection);
-            cmd.Parameters.AddWithValue("@BlogId", id);
-            if (!string.IsNullOrEmpty(blog.BlogTitle))
-            {
-                cmd.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
-            }
-            if (!string.IsNullOrEmpty(blog.BlogContent))
-            {
-                cmd.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
-            }
-            if (!string.IsNullOrEmpty(blog.BlogAuthor))
-            {
-                cmd.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
-            }
-            int result = cmd.ExecuteNonQuery();
-
-            connection.Close();
+            
+            var result = _adoDotNetServices.Execute(patchQuery, parameters.ToArray());
 
             string msg = result > 0 ? "patched success" : "failed";
             return Ok(msg);
         }
-
 
         [HttpDelete("{id}")]
         public IActionResult deleteBlog(int id)

@@ -61,7 +61,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         public IActionResult updateBlog(int id, blogModel blog)
         {
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
-            var isExist = _adoDotNetServices.Query<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
+            var isExist = _adoDotNetServices.QueryFirstOrDefault<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
             if (isExist == null) return NotFound("no data to update");
 
             string updateQuery = @"UPDATE [dbo].[Tbl_Blog]
@@ -85,7 +85,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         public IActionResult patchBlog(int id, blogModel blog) 
         {
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
-            var isExist = _adoDotNetServices.Query<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
+            var isExist = _adoDotNetServices.QueryFirstOrDefault<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
             if (isExist == null) return NotFound("no data to patch");
 
             string condition = string.Empty;

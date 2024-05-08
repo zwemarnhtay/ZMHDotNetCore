@@ -19,7 +19,7 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
 
         public blogModel getBlog(int id)
         {
-            var blog = _context.Blogs.FirstOrDefault(x => x.blogId == id);
+                var blog = _context.Blogs.FirstOrDefault(x => x.blogId == id);
             return blog;
         }
 
@@ -38,6 +38,28 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
             blog.blogTitle= reqBlog.blogTitle;
             blog.blogContent= reqBlog.blogContent;
             blog.blogAuthor= reqBlog.blogAuthor;
+
+            var result = _context.SaveChanges();
+            return result;
+        }
+
+        public int patchBlog(int id, blogModel reqBlog) 
+        {
+            var blog = this.getBlog(id);
+            if(blog == null) return 0;
+
+            if (!string.IsNullOrEmpty(reqBlog.blogTitle))
+            {
+                blog.blogTitle = reqBlog.blogTitle;
+            }
+            if (!string.IsNullOrEmpty(reqBlog.blogAuthor))
+            {
+                blog.blogAuthor = reqBlog.blogAuthor;
+            }
+            if (!string.IsNullOrEmpty(reqBlog.blogContent))
+            {
+                blog.blogContent = reqBlog.blogContent;
+            }
 
             var result = _context.SaveChanges();
             return result;

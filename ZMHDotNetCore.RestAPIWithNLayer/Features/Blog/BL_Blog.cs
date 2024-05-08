@@ -33,6 +33,12 @@
             return result;
         }
 
+        public int patchBlog(int id, blogModel reqBlog)
+        {
+            var result = _daBlog.patchBlog(id, reqBlog);
+            return result;
+        }
+
         public int deleteBlog(int id)
         {
             var result = (_daBlog.deleteBlog(id));

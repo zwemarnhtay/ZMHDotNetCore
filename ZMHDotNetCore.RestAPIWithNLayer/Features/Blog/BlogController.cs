@@ -47,6 +47,21 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
             return Ok(msg);
         }
 
+        [HttpPatch("{id}")]
+        public IActionResult patchBlog(int id, blogModel blog)
+        {
+            var item = _blBlog.getBlog(id);
+            if (item is null)
+            {
+                return NotFound("no data found");
+            }
+
+            var result = _blBlog.patchBlog(id, blog);
+
+            var msg = result > 0 ? "updated success" : "failed";
+            return Ok(msg);
+        }
+
         [HttpDelete("{id}")]
         public IActionResult deleteBlog(int id)
         {

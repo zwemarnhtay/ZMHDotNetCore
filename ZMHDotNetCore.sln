@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.Shared", "ZMH
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.RestAPIWithNLayer", "ZMHDotNetCore.RestAPIWithNLayer\ZMHDotNetCore.RestAPIWithNLayer.csproj", "{625494AE-6C7F-4EBD-BB97-4F9B91CD673A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppHttpClient", "ZMHDotNetCore.ConsoleAppHttpClient\ZMHDotNetCore.ConsoleAppHttpClient.csproj", "{FA0EF5EF-189C-4AA2-928A-464EDC251B51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppHttpClient", "ZMHDotNetCore.ConsoleAppHttpClient\ZMHDotNetCore.ConsoleAppHttpClient.csproj", "{FA0EF5EF-189C-4AA2-928A-464EDC251B51}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.RestAPI", "..\ZMHDotNetCore.RestAPI\ZMHDotNetCore.RestAPI.csproj", "{7A13E37B-0C58-47C2-941E-DC9F4F70002F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.Myanmar_Months", "Myanmar_Months\ZMHDotNetCore.Myanmar_Months.csproj", "{EDAA893D-4CFC-4E5D-AFD5-9ADE3C52E12B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7A13E37B-0C58-47C2-941E-DC9F4F70002F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A13E37B-0C58-47C2-941E-DC9F4F70002F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A13E37B-0C58-47C2-941E-DC9F4F70002F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDAA893D-4CFC-4E5D-AFD5-9ADE3C52E12B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDAA893D-4CFC-4E5D-AFD5-9ADE3C52E12B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDAA893D-4CFC-4E5D-AFD5-9ADE3C52E12B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDAA893D-4CFC-4E5D-AFD5-9ADE3C52E12B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

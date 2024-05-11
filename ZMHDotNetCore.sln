@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.Myanmar_Month
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppHttpClientExample", "ZMHDotNetCore.ConsoleAppHttpClientExample\ZMHDotNetCore.ConsoleAppHttpClientExample.csproj", "{B55EEE31-3E65-4140-AF36-D13626351B1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppRestClientExample", "ZMHDotNetCore.ConsoleAppRestClientExample\ZMHDotNetCore.ConsoleAppRestClientExample.csproj", "{8024754E-C037-46E8-A189-07B4712B1F26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{B55EEE31-3E65-4140-AF36-D13626351B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B55EEE31-3E65-4140-AF36-D13626351B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B55EEE31-3E65-4140-AF36-D13626351B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8024754E-C037-46E8-A189-07B4712B1F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8024754E-C037-46E8-A189-07B4712B1F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8024754E-C037-46E8-A189-07B4712B1F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8024754E-C037-46E8-A189-07B4712B1F26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

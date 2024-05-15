@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.RestAPI", "ZM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.Myanmar_Months", "ZMHDotNetCore.Myanmar_Months\ZMHDotNetCore.Myanmar_Months.csproj", "{A937F036-1938-4CF0-9C1F-15029EBBD622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppHttpClientExample", "ZMHDotNetCore.ConsoleAppHttpClientExample\ZMHDotNetCore.ConsoleAppHttpClientExample.csproj", "{B55EEE31-3E65-4140-AF36-D13626351B1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppHttpClientExample", "ZMHDotNetCore.ConsoleAppHttpClientExample\ZMHDotNetCore.ConsoleAppHttpClientExample.csproj", "{B55EEE31-3E65-4140-AF36-D13626351B1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppRestClientExample", "ZMHDotNetCore.ConsoleAppRestClientExample\ZMHDotNetCore.ConsoleAppRestClientExample.csproj", "{8024754E-C037-46E8-A189-07B4712B1F26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppRestClientExample", "ZMHDotNetCore.ConsoleAppRestClientExample\ZMHDotNetCore.ConsoleAppRestClientExample.csproj", "{8024754E-C037-46E8-A189-07B4712B1F26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.PizzaAPI", "ZMHDotNetCore.PizzaAPI\ZMHDotNetCore.PizzaAPI.csproj", "{0F3FB1C4-7617-4644-8DBE-15E3333F4936}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{8024754E-C037-46E8-A189-07B4712B1F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8024754E-C037-46E8-A189-07B4712B1F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8024754E-C037-46E8-A189-07B4712B1F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F3FB1C4-7617-4644-8DBE-15E3333F4936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3FB1C4-7617-4644-8DBE-15E3333F4936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3FB1C4-7617-4644-8DBE-15E3333F4936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3FB1C4-7617-4644-8DBE-15E3333F4936}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

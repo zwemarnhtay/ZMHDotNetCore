@@ -18,3 +18,28 @@ namespace ZMHDotNetCore.PizzaAPI.DB
         public DbSet<PizzaModel> Pizzas { get; set; }
     }
 }
+
+public class OrderHeaderModel
+{
+    public int OrderId { get; set; }    
+    public string InvoiceNo { get; set; }
+    public int PizzaId { get; set;}
+    public string Pizza { get; set; }
+    public decimal Price { get; set; }
+    public decimal TotalAmount { get; set;}
+}
+
+public class OrderItemModel
+{
+    public int OrderItemId { get; set; }
+    public string InvoiceNo { get; set; }
+    public int ItemId { get; set; }
+    public string ExtraItem { get; set; }
+    public decimal Price { get; set; }
+}
+
+public class ResponseOrder
+{
+    public OrderHeaderModel Order { get; set; }
+    public List<OrderItemModel> OrderItem { get; set; }
+}

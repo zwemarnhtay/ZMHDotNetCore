@@ -25,10 +25,23 @@ namespace ZMHDotNetCore.PizzaAPI.Features.Pizza
         }
 
         [HttpGet("Extras")]
-        public async Task<IActionResult> GetExtrasAsync()
+        public async Task<IActionResult> getExtrasAsync()
         {
             var lst = await _dbContext.ExtraItems.ToListAsync();
             return Ok(lst);
+        }
+
+        [HttpGet("GetOrder/{invoiceNo}")]
+        public async Task<IActionResult> getOrder(string invoiceNo)
+        {
+            var item = await _dbContext.Orders.FirstOrDefaultAsync(x => x.InvoiceNo == invoiceNo);
+            var list = await _dbContext.OrderDetail.Where(x => x.InvoiceNo == invoiceNo).ToListAsync();
+
+            return Ok( new
+            {
+                Order = item,
+                Order_Detail = list 
+            });
         }
 
         [HttpPost("Order")]

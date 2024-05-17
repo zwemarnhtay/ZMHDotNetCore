@@ -32,6 +32,15 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
             return Ok(blog);
         }
 
+        [HttpPost]
+        public IActionResult createBlog(blogModel blog)
+        {
+            var result = _blBlog.createBlog(blog);
+
+            var msg = result > 0 ? "created success" : "created failed";
+            return Ok(msg);
+        }
+
         [HttpPut("{id}")]
         public IActionResult updateBlog(int id, blogModel blog)
         {

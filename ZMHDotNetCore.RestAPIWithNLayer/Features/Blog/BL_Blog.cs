@@ -9,41 +9,40 @@
             _daBlog = new DA_Blog();
         }
 
-        public List<blogModel> getBlogs()
+        public List<BlogModel> GetBlogs()
         {
-            var list = _daBlog.getBlogs();
+            var list = _daBlog.GetBlogs();
             return list;
         }
 
-        public blogModel getBlog(int id)
+        public BlogModel GetBlog(int id)
         {
-            var blog = _daBlog.getBlog(id);
+            var blog = _daBlog.GetBlog(id);
             return blog;
         }
 
-        public int createBlog(blogModel reqBlog)
+        public int CreateBlog(BlogModel reqBlog)
         {
-            var result = _daBlog.createBlog(reqBlog);
+            var result = _daBlog.CreateBlog(reqBlog);
             return result;
         }
 
-        public int updateBlog(int id, blogModel reqBlog)
+        public int UpdateBlog(int id, BlogModel reqBlog)
         {
-            var result = _daBlog.updateBlog(id, reqBlog);
+            var result = _daBlog.UpdateBlog(id, reqBlog);
             return result;
         }
 
-        public int patchBlog(int id, blogModel reqBlog)
+        public int PatchBlog(int id, BlogModel reqBlog)
         {
-            var result = _daBlog.patchBlog(id, reqBlog);
+            var result = _daBlog.PatchBlog(id, reqBlog);
             return result;
         }
 
-        public int deleteBlog(int id)
+        public int DeleteBlog(int id)
         {
-            var result = (_daBlog.deleteBlog(id));
+            var result = (_daBlog.DeleteBlog(id));
             return result;
         }
-
     }
 }

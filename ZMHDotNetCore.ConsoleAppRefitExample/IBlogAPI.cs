@@ -11,18 +11,18 @@ namespace ZMHDotNetCore.ConsoleAppRefitExample
     public interface IBlogAPI
     {
         [Get("/api/Blog")]
-        Task<List<blogModel>> getBlogs();
+        Task<List<BlogModel>> GetBlogs();
 
         [Get("/api/Blog/{id}")]
-        Task<blogModel> getBlog(int id);
+        Task<BlogModel> GetBlog(int id);
 
         [Post("/api/Blog")]
-        Task<string> createBlog(blogModel blog);
+        Task<string> CreateBlog(BlogModel blog);
 
         [Put("/api/Blog/{id}")]
-        Task<string> updateBlog(int id, blogModel blog);
+        Task<string> UpdateBlog(int id, BlogModel blog);
 
         [Delete("/api/Blog/{id}")]
-        Task<string> deleteBlog(int id);
+        Task<string> DeleteBlog(int id);
     }
 }

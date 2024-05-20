@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ZMHDotNetCore.ConsoleApp.Services
 {
-    internal static class connectionStrings
+    internal static class ConnectionStrings
     {
         public static SqlConnectionStringBuilder stringBuilder = new SqlConnectionStringBuilder()
         {

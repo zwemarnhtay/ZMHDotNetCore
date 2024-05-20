@@ -10,7 +10,7 @@ namespace ZMHDotNetCore.ConsoleApp.DTO;
 
 [Table("Tbl_Blog")]
 
-public class blogDTO
+public class BlogDTO
 {
 
     [Key]

@@ -13,11 +13,11 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     public class BlogADODotNetController : ControllerBase
     {
         [HttpGet]
-        public IActionResult getBlogs()
+        public IActionResult GetBlogs()
         {
             string query = "SELECT * FROM tbl_blog";
 
-            SqlConnection connction = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            SqlConnection connction = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             connction.Open();
 
             SqlCommand cmd = new SqlCommand(query, connction);
@@ -38,7 +38,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
             //    list.Add(blog);
             //}
 
-            List<blogModel> list = dt.AsEnumerable().Select(dr => new blogModel
+            List<BlogModel> list = dt.AsEnumerable().Select(dr => new BlogModel
             {
                 BlogId = Convert.ToInt32(dr["BlogId"]),
                 BlogTitle = Convert.ToString(dr["BlogTitle"]),
@@ -49,11 +49,11 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult getBlog(int id)
+        public IActionResult GetBlog(int id)
         {
             string query = "SELECT * FROM tbl_blog WHERE BlogId = @BLogId";
 
-            SqlConnection connction = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            SqlConnection connction = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             connction.Open();
 
             SqlCommand cmd = new SqlCommand(query, connction);
@@ -70,7 +70,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
             }
 
             DataRow dr = dt.Rows[0];
-            var blog = new blogModel
+            var blog = new BlogModel
             {
                 BlogId = Convert.ToInt32(dr["BlogId"]),
                 BlogTitle = Convert.ToString(dr["BlogTitle"]),
@@ -82,7 +82,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult createBlog(string title, string content, string author)
+        public IActionResult CreateBlog(string title, string content, string author)
         {
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
                            ([BlogTitle]
@@ -93,7 +93,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
                              @BlogAuthor,
                              @BlogContent)";
 
-            SqlConnection connection = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             connection.Open();
 
             SqlCommand cmd = new SqlCommand(query, connection);
@@ -109,9 +109,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult updateBlog(int id, blogModel blog)
+        public IActionResult UpdateBlog(int id, BlogModel blog)
         {
-            SqlConnection connection = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             connection.Open();
 
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
@@ -143,9 +143,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult patchBlog(int id, blogModel blog) 
+        public IActionResult PatchBlog(int id, BlogModel blog) 
         {
-            SqlConnection connection = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             connection.Open();
 
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
@@ -209,11 +209,11 @@ namespace ZMHDotNetCore.RestAPI.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult deleteBlog(int id)
+        public IActionResult DeleteBlog(int id)
         {
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
 
-            SqlConnection connection = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             connection.Open();
 
             SqlCommand cmd = new SqlCommand(query, connection);

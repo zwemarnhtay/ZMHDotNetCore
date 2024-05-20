@@ -21,7 +21,7 @@ namespace ZMHDotNetCore.WindowsFormApp
         public frmBlog()
         {
             InitializeComponent();
-            _dapper = new DapperServices(dbconnection.connectionBuilder.ConnectionString);
+            _dapper = new DapperServices(DBConnection.ConnectionBuilder.ConnectionString);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -33,12 +33,12 @@ namespace ZMHDotNetCore.WindowsFormApp
         {
             try
             {
-                blogModel blog = new blogModel();
-                blog.blogTitle = txtTitle.Text.Trim();
-                blog.blogAuthor = txtAuthor.Text.Trim();
-                blog.blogContent = txtContent.Text.Trim();
+                BlogModel blog = new BlogModel();
+                blog.BlogTitle = txtTitle.Text.Trim();
+                blog.BlogAuthor = txtAuthor.Text.Trim();
+                blog.BlogContent = txtContent.Text.Trim();
 
-                int result = _dapper.Execute(blogQuery.blogInsert, blog);
+                int result = _dapper.Execute(BlogQuery.InsertQuery, blog);
                 string msg = result > 0 ? "created success" : "something failed";
                 MessageBox.Show(msg, "blog", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 

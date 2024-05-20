@@ -1,8 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
-public class blogDTO
+public class BlogDTO
 {
-    public int blogId { get; set; }
-    public string? blogTitle { get; set; }
-    public string? blogAuthor { get; set;}
-    public string? blogContent { get; set;}
+    public int BlogId { get; set; }
+    public string? BlogTitle { get; set; }
+    public string? BlogAuthor { get; set;}
+    public string? BlogContent { get; set;}
 }

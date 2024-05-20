@@ -14,17 +14,17 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
         private readonly RestClient _client = new RestClient(new Uri("https://localhost:7041/"));
         private readonly string _blogEndPoint = "api/blog";
 
-        public async Task runAsync()
+        public async Task RunAsync()
         {
-            await readAsync();
-            //await editAsync(12);
-            //await updateAsync(12, "HttpClient title", "blah....", "unknown");
-            //await patchAsync(12, author: "Holy Moly");
-            //await editAsync(12);
-            //await deleteAsync(9);
+            await ReadAsync();
+            //await EditAsync(12);
+            //await UpdateAsync(12, "HttpClient title", "blah....", "unknown");
+            //await PatchAsync(12, author: "Holy Moly");
+            //await EditAsync(12);
+            //await DeleteAsync(9);
         }
 
-        private async Task readAsync()
+        private async Task ReadAsync()
         {
             RestRequest restReq = new RestRequest(_blogEndPoint, Method.Get);
             var response = await _client.ExecuteAsync(restReq);
@@ -32,19 +32,19 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
             {
                 string jsonStr = response.Content!;
                 //Console.WriteLine(jsonStr);
-                List<blogDTO> blogList = JsonConvert.DeserializeObject<List<blogDTO>>(jsonStr)!;
+                List<BlogDTO> blogList = JsonConvert.DeserializeObject<List<BlogDTO>>(jsonStr)!;
 
                 foreach (var blog in blogList)
                 {
-                    Console.WriteLine($"Title => {blog.blogTitle}");
-                    Console.WriteLine($"Content => {blog.blogContent}");
-                    Console.WriteLine($"Author => {blog.blogAuthor}");
+                    Console.WriteLine($"Title => {blog.BlogTitle}");
+                    Console.WriteLine($"Content => {blog.BlogContent}");
+                    Console.WriteLine($"Author => {blog.BlogAuthor}");
                     Console.Write("= = = = = = = = = \n");
                 }
             }
         }
 
-        private async Task editAsync(int id)
+        private async Task EditAsync(int id)
         {
             RestRequest restReq = new RestRequest($"{_blogEndPoint}/{id}", Method.Get);
             var response = await _client.ExecuteAsync(restReq);
@@ -52,11 +52,11 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
             if (response.IsSuccessStatusCode)
             {
                 var jsonStr = response.Content!;
-                var blog = JsonConvert.DeserializeObject<blogDTO>(jsonStr)!;
+                var blog = JsonConvert.DeserializeObject<BlogDTO>(jsonStr)!;
 
-                Console.WriteLine($"Title => {blog.blogTitle}");
-                Console.WriteLine($"Content => {blog.blogContent}");
-                Console.WriteLine($"Author => {blog.blogAuthor}");
+                Console.WriteLine($"Title => {blog.BlogTitle}");
+                Console.WriteLine($"Content => {blog.BlogContent}");
+                Console.WriteLine($"Author => {blog.BlogAuthor}");
                 Console.Write("= = = = = = = = = \n");
             }
             else
@@ -66,13 +66,13 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
             }
         }
 
-        private async Task createAsync(string title, string content, string author)
+        private async Task CreateAsync(string title, string content, string author)
         {
-            blogDTO blogDTO = new blogDTO()
+            BlogDTO blogDTO = new BlogDTO()
             {
-                blogTitle = title,
-                blogAuthor = author,
-                blogContent = content
+                BlogTitle = title,
+                BlogAuthor = author,
+                BlogContent = content
             };
 
             RestRequest restReq = new RestRequest(_blogEndPoint, Method.Post);
@@ -85,13 +85,13 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
             }
         }
 
-        private async Task updateAsync(int id, string title, string content, string author)
+        private async Task UpdateAsync(int id, string title, string content, string author)
         {
-            blogDTO blogDTO = new blogDTO()
+            BlogDTO blogDTO = new BlogDTO()
             {
-                blogTitle = title,
-                blogAuthor = author,
-                blogContent = content
+                BlogTitle = title,
+                BlogAuthor = author,
+                BlogContent = content
             };
 
             RestRequest restReq = new RestRequest(_blogEndPoint, Method.Put);
@@ -105,22 +105,22 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
             }
         }
 
-        private async Task patchAsync(int id, string? title = null, string? content = null, string? author = null)
+        private async Task PatchAsync(int id, string? title = null, string? content = null, string? author = null)
         {
-            blogDTO blogDTO = new blogDTO();
+            BlogDTO blogDTO = new BlogDTO();
 
 
             if (!string.IsNullOrEmpty(title))
             {
-                blogDTO.blogTitle = title;
+                blogDTO.BlogTitle = title;
             }
             if (!string.IsNullOrEmpty(content))
             {
-                blogDTO.blogContent = content;
+                blogDTO.BlogContent = content;
             }
             if (!string.IsNullOrEmpty(author))
             {
-                blogDTO.blogAuthor = author;
+                blogDTO.BlogAuthor = author;
             }
 
             RestRequest restReq = new RestRequest(_blogEndPoint, Method.Patch);
@@ -134,7 +134,7 @@ namespace ZMHDotNetCore.ConsoleAppHttpClientExample
             }
         }
 
-        private async Task deleteAsync(int id)
+        private async Task DeleteAsync(int id)
         {
             RestRequest restReq = new RestRequest($"{_blogEndPoint}/{id}", Method.Delete);
             var response = await _client.ExecuteAsync(restReq);

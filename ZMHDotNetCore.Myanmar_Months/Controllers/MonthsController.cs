@@ -17,7 +17,7 @@ namespace ZMHDotNetCore.Myanmar_Months.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> getMonths()
+        public async Task<IActionResult> GetMonths()
         {
             var dataList = await GetMonthsAsync();
             var months = dataList.Tbl_Months.Select(mth => mth.MonthMm).ToList();
@@ -25,7 +25,7 @@ namespace ZMHDotNetCore.Myanmar_Months.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> detailMonth(int id)
+        public async Task<IActionResult> DetailMonth(int id)
         {
             if (id < 1 || id > 12)
             {

@@ -12,18 +12,18 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     public class BlogDapperController : ControllerBase
     {
         [HttpGet]
-        public IActionResult getBlogs()
+        public IActionResult GtBlogs()
         {
             string query = "SELECT * FROM tbl_Blog";
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            List<blogModel> list = db.Query<blogModel>(query).ToList();
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
+            List<BlogModel> list = db.Query<BlogModel>(query).ToList();
             return Ok(list);
         }
 
         [HttpGet("{id}")]
-        public IActionResult getBlog(int id)
+        public IActionResult GetBlog(int id)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if(item is null)
             {
                 return NotFound("no data found!");
@@ -33,7 +33,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult createBlog(blogModel Blog)
+        public IActionResult CreateBlog(BlogModel Blog)
         {
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
                            ([BlogTitle]
@@ -43,7 +43,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
                             (@BlogTitle,
                              @BlogAuthor,
                              @BlogContent)";
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             int result = db.Execute(query, Blog);
 
             string msg = result > 0 ? "created success" : "failed";
@@ -51,9 +51,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult updateBlog(int id, blogModel Blog)
+        public IActionResult UpdateBlog(int id, BlogModel Blog)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if (item is null)
             {
                 return NotFound("no data found!");
@@ -64,7 +64,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
                               ,[BlogContent] = @BlogContent
                          WHERE BlogId = @BlogId";
             Blog.BlogId = id;
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             var result = db.Execute(query, Blog);
 
             var msg = result > 0 ? "updated success" : "failed";
@@ -72,9 +72,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult patchBlog(int id, blogModel Blog)
+        public IActionResult PatchBlog(int id, BlogModel Blog)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if (item is null)
             {
                 return NotFound("no data found!");
@@ -107,7 +107,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
                          WHERE BlogId = @BlogId";
 
             Blog.BlogId = id;
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
             var result = db.Execute(query, Blog);
 
             var msg = result > 0 ? "patched success" : "failed";
@@ -115,27 +115,27 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult deleteBlog(int id)
+        public IActionResult DeleteBlog(int id)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if (item is null)
             {
                 return NotFound("no data found!");
             }
 
             string query = "delete from [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            var result = db.Execute(query, new blogModel { BlogId = id });
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
+            var result = db.Execute(query, new BlogModel { BlogId = id });
 
             var msg = result > 0 ? "deleted success" : "failed";
             return Ok(msg);
         }
 
-        private blogModel? findData(int id)
+        private BlogModel? FindData(int id)
         {
             string query = "select * from tbl_blog where BlogId = @BlogId";
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            var item = db.Query<blogModel>(query, new { BlogId = id }).FirstOrDefault();
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
+            var item = db.Query<BlogModel>(query, new { BlogId = id }).FirstOrDefault();
             return item;
         }
     }

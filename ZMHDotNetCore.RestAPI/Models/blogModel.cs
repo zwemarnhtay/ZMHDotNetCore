@@ -10,7 +10,7 @@ namespace ZMHDotNetCore.RestAPI.Models;
 
 [Table("Tbl_Blog")]
 
-public class blogModel
+public class BlogModel
 {
 
     [Key]

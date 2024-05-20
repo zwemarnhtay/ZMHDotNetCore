@@ -9,7 +9,7 @@ namespace ZMHDotNetCore.PizzaAPI.DB
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(dbconnection.connectionBuilder.ConnectionString);
+            optionsBuilder.UseSqlServer(DBConnection.ConnectionBuilder.ConnectionString);
         }
 
         public DbSet<ExtraItemModel> ExtraItems { get; set; }

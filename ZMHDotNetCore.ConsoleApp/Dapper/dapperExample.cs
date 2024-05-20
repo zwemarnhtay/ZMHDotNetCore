@@ -11,7 +11,7 @@ using ZMHDotNetCore.ConsoleApp.Services;
 
 namespace ZMHDotNetCore.ConsoleApp.Dapper
 {
-    internal class dapperExample
+    internal class DapperExample
     {
         public void run()
         {
@@ -25,7 +25,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void read()
         {
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
             var list = db.Query("select * from tbl_blog").ToList(); //var => List<blogDTO>
 
             foreach (var item in list)
@@ -41,8 +41,8 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void find(int id)
         {
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            var item = db.Query("select * from tbl_blog where BlogId = @BlogId", new blogDTO { BlogId = id }).FirstOrDefault();
+            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
+            var item = db.Query("select * from tbl_blog where BlogId = @BlogId", new BlogDTO { BlogId = id }).FirstOrDefault();
 
             if (item == null)
             {
@@ -58,7 +58,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void create(string title, string author, string content)
         {
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
                            ([BlogTitle]
@@ -69,7 +69,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
                              @BlogAuthor,
                              @BlogContent)";
 
-            var item = new blogDTO { BlogTitle = title, BlogAuthor = author, BlogContent = content };
+            var item = new BlogDTO { BlogTitle = title, BlogAuthor = author, BlogContent = content };
 
             var result = db.Execute(query, item); //instead of var => int
 
@@ -79,7 +79,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void update(int id, string title, string author, string content)
         {
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
 
             string query = @"UPDATE [dbo].[Tbl_Blog]
                            SET [BlogTitle] = @BlogTitle
@@ -87,7 +87,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
                               ,[BlogContent] = @BlogContent
                          WHERE BlogId = @BlogId";
 
-            var item = new blogDTO { BlogId = id, BlogTitle = title, BlogAuthor = author, BlogContent = content };
+            var item = new BlogDTO { BlogId = id, BlogTitle = title, BlogAuthor = author, BlogContent = content };
 
             var result = db.Execute(query, item);
 
@@ -99,11 +99,11 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void delete(int id)
         {
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
 
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
 
-            var result = db.Execute(query, new blogDTO { BlogId = id });
+            var result = db.Execute(query, new BlogDTO { BlogId = id });
             
 
             var msg = result > 0 ? "success" : "failed";

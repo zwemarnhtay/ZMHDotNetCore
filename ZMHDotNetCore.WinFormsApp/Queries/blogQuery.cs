@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZMHDotNetCore.WinFormsApp.Queries
 {
-    internal class blogQuery
+    internal class BlogQuery
     {
-        public static string blogInsert { get; } = @"INSERT INTO [dbo].[Tbl_Blog]
+        public static string InsertQuery { get; } = @"INSERT INTO [dbo].[Tbl_Blog]
            ([BlogTitle]
            ,[BlogAuthor]
            ,[BlogContent])

@@ -15,16 +15,16 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
         }
 
         [HttpGet]
-        public IActionResult getBlogs()
+        public IActionResult GetBlogs()
         {
-            var list = _blBlog.getBlogs();
+            var list = _blBlog.GetBlogs();
             return Ok(list);
         }
 
         [HttpGet("{id}")]
-        public IActionResult getBlog(int id)
+        public IActionResult GetBlog(int id)
         {
-            var blog = _blBlog.getBlog(id);
+            var blog = _blBlog.GetBlog(id);
             if (blog is null)
             {
                 return NotFound("no data found");
@@ -33,54 +33,54 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
         }
 
         [HttpPost]
-        public IActionResult createBlog(blogModel blog)
+        public IActionResult CreateBlog(BlogModel blog)
         {
-            var result = _blBlog.createBlog(blog);
+            var result = _blBlog.CreateBlog(blog);
 
             var msg = result > 0 ? "created success" : "created failed";
             return Ok(msg);
         }
 
         [HttpPut("{id}")]
-        public IActionResult updateBlog(int id, blogModel blog)
+        public IActionResult UpdateBlog(int id, BlogModel blog)
         {
-            var item = _blBlog.getBlog(id);
+            var item = _blBlog.GetBlog(id);
             if (item is null)
             {
                 return NotFound("no data found");
             }
 
-            var result = _blBlog.updateBlog(id, blog);
+            var result = _blBlog.UpdateBlog(id, blog);
 
             var msg = result > 0 ? "updated success" : "failed";
             return Ok(msg);
         }
 
         [HttpPatch("{id}")]
-        public IActionResult patchBlog(int id, blogModel blog)
+        public IActionResult PatchBlog(int id, BlogModel blog)
         {
-            var item = _blBlog.getBlog(id);
+            var item = _blBlog.GetBlog(id);
             if (item is null)
             {
                 return NotFound("no data found");
             }
 
-            var result = _blBlog.patchBlog(id, blog);
+            var result = _blBlog.PatchBlog(id, blog);
 
             var msg = result > 0 ? "updated success" : "failed";
             return Ok(msg);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult deleteBlog(int id)
+        public IActionResult DeleteBlog(int id)
         {
-            var blog = _blBlog.getBlog(id);
+            var blog = _blBlog.GetBlog(id);
             if (blog is null)
             {
                 return NotFound("no data found");
             }
 
-            var result = _blBlog.deleteBlog(id);
+            var result = _blBlog.DeleteBlog(id);
 
             var msg = result > 0 ? "deleted success" : "failed";
             return Ok(msg);

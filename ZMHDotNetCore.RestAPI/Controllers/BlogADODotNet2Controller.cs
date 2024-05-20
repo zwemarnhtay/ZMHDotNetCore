@@ -13,22 +13,22 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     [ApiController]
     public class BlogADODotNet2Controller : ControllerBase
     {
-        private readonly AdoDotNetServices _adoDotNetServices = new AdoDotNetServices(connectionStrings.stringBuilder.ConnectionString);
+        private readonly AdoDotNetServices _adoDotNetServices = new AdoDotNetServices(ConnectionStrings.StringBuilder.ConnectionString);
 
         [HttpGet]
-        public IActionResult getBlogs()
+        public IActionResult GetBlogs()
         {
             string query = "SELECT * FROM tbl_blog";
-            var list = _adoDotNetServices.Query<blogModel>(query);
+            var list = _adoDotNetServices.Query<BlogModel>(query);
 
             return Ok(list);
         }
 
         [HttpGet("{id}")]
-        public IActionResult getBlog(int id)
+        public IActionResult GetBlog(int id)
         {
             string query = "SELECT * FROM tbl_blog WHERE BlogId = @BLogId";
-            var blog = _adoDotNetServices.QueryFirstOrDefault<blogModel>(query, new AdoDotNetParameters("@BlogId", id));
+            var blog = _adoDotNetServices.QueryFirstOrDefault<BlogModel>(query, new AdoDotNetParameters("@BlogId", id));
             if(blog is null)
             {
                 return NotFound("no data found");
@@ -37,7 +37,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult createBlog(blogModel blog)
+        public IActionResult CreateBlog(BlogModel blog)
         {
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
                            ([BlogTitle]
@@ -58,10 +58,10 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult updateBlog(int id, blogModel blog)
+        public IActionResult UpdateBlog(int id, BlogModel blog)
         {
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
-            var isExist = _adoDotNetServices.QueryFirstOrDefault<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
+            var isExist = _adoDotNetServices.QueryFirstOrDefault<BlogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
             if (isExist == null) return NotFound("no data to update");
 
             string updateQuery = @"UPDATE [dbo].[Tbl_Blog]
@@ -82,10 +82,10 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult patchBlog(int id, blogModel blog) 
+        public IActionResult PatchBlog(int id, BlogModel blog) 
         {
             string findQuery = "SELECT * FROM tbl_blog WHERE BlogId = @BlogId";
-            var isExist = _adoDotNetServices.QueryFirstOrDefault<blogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
+            var isExist = _adoDotNetServices.QueryFirstOrDefault<BlogModel>(findQuery, new AdoDotNetParameters("@BlogId", id));
             if (isExist == null) return NotFound("no data to patch");
 
             string condition = string.Empty;
@@ -127,7 +127,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult deleteBlog(int id)
+        public IActionResult DeleteBlog(int id)
         {
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
             int result = _adoDotNetServices.Execute(query, new AdoDotNetParameters("@BlogId", id));

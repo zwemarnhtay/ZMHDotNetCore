@@ -4,8 +4,8 @@
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(dbconnection.connectionBuilder.ConnectionString);
+            optionsBuilder.UseSqlServer(DBConnection.ConnectionBuilder.ConnectionString);
         }
-        public DbSet<blogModel> Blogs { get; set; }
+        public DbSet<BlogModel> Blogs { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.MmProverbs
     [ApiController]
     public class MmProverbsController : ControllerBase
     {
-        private async Task<MmProverbsDTO> getDtatAsync()
+        private async Task<MmProverbsDTO> GetDtatAsync()
         {
             var jsonData = await System.IO.File.ReadAllTextAsync("MyanmarProverbs.json");
             var modal = JsonConvert.DeserializeObject<MmProverbsDTO>(jsonData);
@@ -16,16 +16,16 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.MmProverbs
         }
 
         [HttpGet]
-        public async Task<IActionResult> get()
+        public async Task<IActionResult> Get()
         {
-            var modal = await getDtatAsync();
+            var modal = await GetDtatAsync();
             return Ok(modal.ProverbsTitle);
         }
 
         [HttpGet("{titleName}")]
-        public async Task<IActionResult> getByTitle(string titleName)
+        public async Task<IActionResult> GetByTitle(string titleName)
         {
-            var modal = await getDtatAsync();
+            var modal = await GetDtatAsync();
 
             var proverbTitle = modal.ProverbsTitle.FirstOrDefault(x => x.TitleName == titleName);
             if (proverbTitle == null) return NotFound("no data found");
@@ -43,9 +43,9 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.MmProverbs
         }
 
         [HttpGet("{titleId}/{proverbId}")]
-        public async Task<IActionResult> getProverbs(int titleId, int proverbId)
+        public async Task<IActionResult> GetProverbs(int titleId, int proverbId)
         {
-            var modal = await getDtatAsync();
+            var modal = await GetDtatAsync();
 
             var proverb = modal.Proverbs.FirstOrDefault(x => x.TitleId == titleId && x.ProverbId == proverbId);
 

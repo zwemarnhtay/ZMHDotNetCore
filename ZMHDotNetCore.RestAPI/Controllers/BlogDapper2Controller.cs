@@ -12,19 +12,19 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     [ApiController]
     public class BlogDapper2Controller : ControllerBase
     {
-        private readonly DapperServices _dapperService = new DapperServices(connectionStrings.stringBuilder.ConnectionString);
+        private readonly DapperServices _dapperService = new DapperServices(ConnectionStrings.StringBuilder.ConnectionString);
         [HttpGet]
-        public IActionResult getBlogs()
+        public IActionResult GetBlogs()
         {
             string query = "SELECT * FROM tbl_Blog";
-            var list = _dapperService.Query<blogModel>(query);
+            var list = _dapperService.Query<BlogModel>(query);
             return Ok(list);
         }
 
         [HttpGet("{id}")]
-        public IActionResult getBlog(int id)
+        public IActionResult GetBlog(int id)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if(item is null)
             {
                 return NotFound("no data found!");
@@ -34,7 +34,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult createBlog(blogModel Blog)
+        public IActionResult CreateBlog(BlogModel Blog)
         {
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
                            ([BlogTitle]
@@ -51,9 +51,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult updateBlog(int id, blogModel Blog)
+        public IActionResult UpdateBlog(int id, BlogModel Blog)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if (item is null)
             {
                 return NotFound("no data found!");
@@ -71,9 +71,9 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult patchBlog(int id, blogModel Blog)
+        public IActionResult PatchBlog(int id, BlogModel Blog)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if (item is null)
             {
                 return NotFound("no data found!");
@@ -113,26 +113,26 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult deleteBlog(int id)
+        public IActionResult DeleteBlog(int id)
         {
-            var item = findData(id);
+            var item = FindData(id);
             if (item is null)
             {
                 return NotFound("no data found!");
             }
 
             string query = "delete from [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
-            var result = _dapperService.Execute(query, new blogModel { BlogId = id });
+            var result = _dapperService.Execute(query, new BlogModel { BlogId = id });
 
             var msg = result > 0 ? "deleted success" : "failed";
             return Ok(msg);
         }
 
-        private blogModel? findData(int id)
+        private BlogModel? FindData(int id)
         {
             string query = "select * from tbl_blog where BlogId = @BlogId";
-            using IDbConnection db = new SqlConnection(connectionStrings.stringBuilder.ConnectionString);
-            var item = _dapperService.QueryFirstOrDefault<blogModel>(query, new { BlogId = id });
+            using IDbConnection db = new SqlConnection(ConnectionStrings.StringBuilder.ConnectionString);
+            var item = _dapperService.QueryFirstOrDefault<BlogModel>(query, new { BlogId = id });
             return item;
         }
     }

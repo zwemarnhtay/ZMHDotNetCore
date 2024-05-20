@@ -10,16 +10,16 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
-        private readonly appDBContext _context;
+        private readonly AppDBContext _context;
 
         public BlogController()
         {
-            _context = new appDBContext();
+            _context = new AppDBContext();
         }
         // private readonly appDBContext _context = new appDBContext();
 
         [HttpGet] // declare http method for below function
-        public IActionResult read()
+        public IActionResult Read()
         {
             var list = _context.Blogs.ToList();
             return Ok(list);
@@ -37,7 +37,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult create(blogModel Blog)
+        public IActionResult Create(BlogModel Blog)
         {
             _context.Blogs.Add(Blog);
             var result = _context.SaveChanges();
@@ -46,7 +46,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult update(int id, blogModel Blog)
+        public IActionResult Update(int id, BlogModel Blog)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)
@@ -64,7 +64,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult patch(int id, blogModel Blog)
+        public IActionResult Patch(int id, BlogModel Blog)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)
@@ -91,7 +91,7 @@ namespace ZMHDotNetCore.RestAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult delete(int id)
+        public IActionResult Delete(int id)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
             if (item is null)

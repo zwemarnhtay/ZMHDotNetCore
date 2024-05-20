@@ -8,7 +8,7 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.LatHtaukBayDin
     [ApiController]
     public class LatHtaukBayDinController : ControllerBase
     {
-        private async Task<LatHtaukBayDin> getDataAsync()
+        private async Task<LatHtaukBayDin> GetDataAsync()
         {
             var jsonStr = await System.IO.File.ReadAllTextAsync("data.json");
             var model = JsonConvert.DeserializeObject<LatHtaukBayDin>(jsonStr);
@@ -16,24 +16,24 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.LatHtaukBayDin
         }
 
         [HttpGet("questions")]
-        public async Task<IActionResult> getQuestions()
+        public async Task<IActionResult> GetQuestions()
         {
-            var model = await getDataAsync();
-            return Ok(model.questions);
+            var model = await GetDataAsync();
+            return Ok(model.Questions);
         }
 
         [HttpGet]
-        public async Task<IActionResult> getNumberList()
+        public async Task<IActionResult> GetNumberList()
         {
-            var model = await getDataAsync();
-            return Ok(model.numberList);
+            var model = await GetDataAsync();
+            return Ok(model.NumberList);
         }
 
         [HttpGet("{qNo}/{No}")]
-        public async Task<IActionResult> findAnswer(int qNo, int No)
+        public async Task<IActionResult> FindAnswer(int qNo, int No)
         {
-            var model = await getDataAsync();
-            var answer = model.answers.FirstOrDefault(x=> x.questionNo == qNo && x.answerNo == No);
+            var model = await GetDataAsync();
+            var answer = model.Answers.FirstOrDefault(x=> x.QuestionNo == qNo && x.AnswerNo == No);
             return Ok(answer);
         }
     }
@@ -42,22 +42,22 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.LatHtaukBayDin
 
     public class LatHtaukBayDin
     {
-        public Question[] questions { get; set; }
-        public Answer[] answers { get; set; }
-        public string[] numberList { get; set; }
+        public Question[] Questions { get; set; }
+        public Answer[] Answers { get; set; }
+        public string[] NumberList { get; set; }
     }
 
     public class Question
     {
-        public int questionNo { get; set; }
-        public string questionName { get; set; }
+        public int QuestionNo { get; set; }
+        public string QuestionName { get; set; }
     }
 
     public class Answer
     {
-        public int questionNo { get; set; }
-        public int answerNo { get; set; }
-        public string answerResult { get; set; }
+        public int QuestionNo { get; set; }
+        public int AnswerNo { get; set; }
+        public string AnswerResult { get; set; }
     }
 
 }

@@ -11,63 +11,63 @@ namespace ZMHDotNetCore.RestAPIWithNLayer.Features.Blog
             _context = new DBContext();
         }
 
-        public List<blogModel> getBlogs()
+        public List<BlogModel> GetBlogs()
         {
             var list = _context.Blogs.ToList();
             return list;
         }
 
-        public blogModel getBlog(int id)
+        public BlogModel GetBlog(int id)
         {
-                var blog = _context.Blogs.FirstOrDefault(x => x.blogId == id);
+                var blog = _context.Blogs.FirstOrDefault(x => x.BlogId == id);
             return blog;
         }
 
-        public int createBlog(blogModel reqBlog)
+        public int CreateBlog(BlogModel reqBlog)
         {
             _context.Blogs.Add(reqBlog);
             var result = _context.SaveChanges();
             return result;
         }
 
-        public int updateBlog(int id, blogModel reqBlog)
+        public int UpdateBlog(int id, BlogModel reqBlog)
         {
-            var blog = this.getBlog(id);
+            var blog = this.GetBlog(id);
             if(blog == null) return 0;
 
-            blog.blogTitle= reqBlog.blogTitle;
-            blog.blogContent= reqBlog.blogContent;
-            blog.blogAuthor= reqBlog.blogAuthor;
+            blog.BlogTitle= reqBlog.BlogTitle;
+            blog.BlogContent= reqBlog.BlogContent;
+            blog.BlogAuthor= reqBlog.BlogAuthor;
 
             var result = _context.SaveChanges();
             return result;
         }
 
-        public int patchBlog(int id, blogModel reqBlog) 
+        public int PatchBlog(int id, BlogModel reqBlog) 
         {
-            var blog = this.getBlog(id);
+            var blog = this.GetBlog(id);
             if(blog == null) return 0;
 
-            if (!string.IsNullOrEmpty(reqBlog.blogTitle))
+            if (!string.IsNullOrEmpty(reqBlog.BlogTitle))
             {
-                blog.blogTitle = reqBlog.blogTitle;
+                blog.BlogTitle = reqBlog.BlogTitle;
             }
-            if (!string.IsNullOrEmpty(reqBlog.blogAuthor))
+            if (!string.IsNullOrEmpty(reqBlog.BlogAuthor))
             {
-                blog.blogAuthor = reqBlog.blogAuthor;
+                blog.BlogAuthor = reqBlog.BlogAuthor;
             }
-            if (!string.IsNullOrEmpty(reqBlog.blogContent))
+            if (!string.IsNullOrEmpty(reqBlog.BlogContent))
             {
-                blog.blogContent = reqBlog.blogContent;
+                blog.BlogContent = reqBlog.BlogContent;
             }
 
             var result = _context.SaveChanges();
             return result;
         }
 
-        public int deleteBlog(int id)
+        public int DeleteBlog(int id)
         {
-            var blog = this.getBlog(id);
+            var blog = this.GetBlog(id);
             if(blog == null) return 0;
 
             _context.Blogs.Remove(blog);

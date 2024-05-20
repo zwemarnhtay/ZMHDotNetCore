@@ -5,32 +5,32 @@ using System.Text.Json.Serialization;
 Console.WriteLine("Hello, World!");
 
 string jsonStr = await File.ReadAllTextAsync("data.json");
-var model = JsonConvert.DeserializeObject<mainDTO>(jsonStr);
+var model = JsonConvert.DeserializeObject<MainDTO>(jsonStr);
 
 //Console.WriteLine(jsonStr);
-foreach (var item in model.questions)
+foreach (var item in model.Questions)
 {
-    Console.WriteLine(item.questionNo);
+    Console.WriteLine(item.QuestionNo);
 }
 
 Console.ReadLine();
 
-public class mainDTO
+public class MainDTO
 {
-    public Question[] questions { get; set; }
+    public Question[] Questions { get; set; }
     public Answer[] answers { get; set; }
     public string[] numberList { get; set; }
 }
 
 public class Question
 {
-    public int questionNo { get; set; }
-    public string questionName { get; set; }
+    public int QuestionNo { get; set; }
+    public string QuestionName { get; set; }
 }
 
 public class Answer
 {
-    public int questionNo { get; set; }
-    public int answerNo { get; set; }
-    public string answerResult { get; set; }
+    public int QuestionNo { get; set; }
+    public int AnswerNo { get; set; }
+    public string AnswerResult { get; set; }
 }

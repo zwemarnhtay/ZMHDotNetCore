@@ -1,12 +1,12 @@
 ﻿namespace ZMHDotNetCore.RestAPIWithNLayer.Models
 {
     [Table("tbl_blog")]
-    public class blogModel
+    public class BlogModel
     {
         [Key]
-        public int blogId { get; set; }
-        public string? blogTitle { get; set; }
-        public string? blogAuthor { get; set; }
-        public string? blogContent { get; set; }
+        public int BlogId { get; set; }
+        public string? BlogTitle { get; set; }
+        public string? BlogAuthor { get; set; }
+        public string? BlogContent { get; set; }
     }
 }

@@ -12,39 +12,39 @@ namespace ZMHDotNetCore.ConsoleAppRefitExample
     {
         private readonly IBlogAPI _service = RestService.For<IBlogAPI>("https://localhost:7033");
 
-        public async Task runAsync()
+        public async Task RunAsync()
         {
-            await readAsync();
-            await editAsync(3);
-            await editAsync(808);
-            await createAsync("Tote Tote", "Too", "blah......");
-            await updateAsync(1, "Refit updated", "unknown", "...");
-            await deleteAsync(12);
-            await readAsync();
+            await ReadAsync();
+            await EditAsync(3);
+            await EditAsync(808);
+            await CreateAsync("Tote Tote", "Too", "blah......");
+            await UpdateAsync(1, "Refit updated", "unknown", "...");
+            await DeleteAsync(12);
+            await ReadAsync();
         }
 
-        private async Task readAsync()
+        private async Task ReadAsync()
         {
-            var blogs = await _service.getBlogs();
+            var blogs = await _service.GetBlogs();
             foreach (var blog in blogs)
             {
-                Console.WriteLine($"Id => {blog.blogId}");
-                Console.WriteLine($"Title => {blog.blogTitle}");
-                Console.WriteLine($"Author => {blog.blogAuthor}");
-                Console.WriteLine($"Content => {blog.blogContent}");
+                Console.WriteLine($"Id => {blog.BlogId}");
+                Console.WriteLine($"Title => {blog.BlogTitle}");
+                Console.WriteLine($"Author => {blog.BlogAuthor}");
+                Console.WriteLine($"Content => {blog.BlogContent}");
                 Console.WriteLine("---------------------------------");
             }
         }
 
-        private async Task editAsync(int id)
+        private async Task EditAsync(int id)
         {
             try
             {
-                var blog = await _service.getBlog(id);
-                Console.WriteLine($"Id => {blog.blogId}");
-                Console.WriteLine($"Title => {blog.blogTitle}");
-                Console.WriteLine($"Author => {blog.blogAuthor}");
-                Console.WriteLine($"Content => {blog.blogContent}");
+                var blog = await _service.GetBlog(id);
+                Console.WriteLine($"Id => {blog.BlogId}");
+                Console.WriteLine($"Title => {blog.BlogTitle}");
+                Console.WriteLine($"Author => {blog.BlogAuthor}");
+                Console.WriteLine($"Content => {blog.BlogContent}");
                 Console.WriteLine("---------------------------------");
             }
             catch(ApiException e)
@@ -59,30 +59,30 @@ namespace ZMHDotNetCore.ConsoleAppRefitExample
 
         }
 
-        private async Task createAsync(string title, string author, string content)
+        private async Task CreateAsync(string title, string author, string content)
         {
-            blogModel blog = new blogModel()
+            BlogModel blog = new BlogModel()
             {
-                blogTitle = title,
-                blogAuthor = author,
-                blogContent = content,
+                BlogTitle = title,
+                BlogAuthor = author,
+                BlogContent = content,
             };
 
-            var msg = await _service.createBlog(blog);
+            var msg = await _service.CreateBlog(blog);
             Console.WriteLine(msg);
         }
 
-        private async Task updateAsync(int id, string title, string author, string content)
+        private async Task UpdateAsync(int id, string title, string author, string content)
         {
-            blogModel blog = new blogModel()
+            BlogModel blog = new BlogModel()
             {
-                blogTitle = title,
-                blogAuthor = author,
-                blogContent = content,
+                BlogTitle = title,
+                BlogAuthor = author,
+                BlogContent = content,
             };
             try
             {
-                var msg = await _service.updateBlog(id, blog);
+                var msg = await _service.UpdateBlog(id, blog);
                 Console.WriteLine(msg);
             }
             catch (ApiException e)
@@ -96,11 +96,11 @@ namespace ZMHDotNetCore.ConsoleAppRefitExample
             }
         }
 
-        private async Task deleteAsync(int id)
+        private async Task DeleteAsync(int id)
         {
             try
             {
-                var msg = await _service.deleteBlog(id);
+                var msg = await _service.DeleteBlog(id);
                 Console.WriteLine(msg);
             }
             catch (ApiException e)

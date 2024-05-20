@@ -20,7 +20,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void read()
         {
-            appDBContext db = new appDBContext();
+            AppDBContext db = new AppDBContext();
             var list = db.Blogs.ToList();
 
             foreach (var item in list)
@@ -35,7 +35,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void find(int id)
         {
-            appDBContext db = new appDBContext();
+            AppDBContext db = new AppDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
             if (item == null)
@@ -52,9 +52,9 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void create(string title, string author, string content)
         {
-            appDBContext db = new appDBContext();
+            AppDBContext db = new AppDBContext();
 
-            var item = new blogDTO { BlogTitle = title, BlogAuthor = author, BlogContent = content };
+            var item = new BlogDTO { BlogTitle = title, BlogAuthor = author, BlogContent = content };
 
             db.Blogs.Add(item);
             int result = db.SaveChanges();
@@ -64,7 +64,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void update(int id, string title, string author, string content)
         {
-            appDBContext db = new appDBContext();
+            AppDBContext db = new AppDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
             if (item is null)
@@ -83,7 +83,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void delete(int id)
         {
-            appDBContext db = new appDBContext();
+            AppDBContext db = new AppDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
             if (item is null)

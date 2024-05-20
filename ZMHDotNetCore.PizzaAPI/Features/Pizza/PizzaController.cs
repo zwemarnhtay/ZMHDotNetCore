@@ -18,18 +18,18 @@ namespace ZMHDotNetCore.PizzaAPI.Features.Pizza
         public PizzaController()
         {
             _dbContext = new DBContext();
-            _dapperService = new DapperServices(dbconnection.connectionBuilder.ConnectionString);
+            _dapperService = new DapperServices(DBConnection.ConnectionBuilder.ConnectionString);
         }
 
         [HttpGet]
-        public async Task<IActionResult> getPizzas()
+        public async Task<IActionResult> GetPizzas()
          {
             var pizzas = await _dbContext.Pizzas.ToListAsync();
             return Ok(pizzas);
         }
 
         [HttpGet("Extras")]
-        public async Task<IActionResult> getExtrasAsync()
+        public async Task<IActionResult> GetExtrasAsync()
         {
             var lst = await _dbContext.ExtraItems.ToListAsync();
             return Ok(lst);
@@ -49,15 +49,15 @@ namespace ZMHDotNetCore.PizzaAPI.Features.Pizza
          } **/
 
         [HttpGet("GetOrder/{invNo}")]
-        public IActionResult getOrder(string invNo)
+        public IActionResult GetOrder(string invNo)
         {
             var order = _dapperService.QueryFirstOrDefault<OrderHeaderModel>
                 (
-                    PizzaQuery.orderQuery, new { invoiceNo = invNo }
+                    PizzaQuery.OrderQuery, new { invoiceNo = invNo }
                 );
             var orderItem = _dapperService.Query<OrderItemModel>
                 (
-                    PizzaQuery.orderItemQuery, new { invoiceNo = invNo }
+                    PizzaQuery.OrderItemQuery, new { invoiceNo = invNo }
                 );
 
             var model = new ResponseOrder
@@ -70,7 +70,7 @@ namespace ZMHDotNetCore.PizzaAPI.Features.Pizza
         }
 
         [HttpPost("Order")]
-        public async Task<IActionResult> orderPizza(OrderRequestModel orderReq)
+        public async Task<IActionResult> OrderPizza(OrderRequestModel orderReq)
         {
             var orderPizza = _dbContext.Pizzas.FirstOrDefault(x => x.id == orderReq.PizzaId);
             var total = orderPizza.price;

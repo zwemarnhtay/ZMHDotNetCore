@@ -2,9 +2,9 @@
 
 namespace ZMHDotNetCore.PizzaAPI
 {
-    public class dbconnection
+    public class DBConnection
     {
-        public static SqlConnectionStringBuilder connectionBuilder = new SqlConnectionStringBuilder()
+        public static SqlConnectionStringBuilder ConnectionBuilder = new SqlConnectionStringBuilder()
         {
             DataSource = "DESKTOP-1U67J66",     // server name
             InitialCatalog = "DotNetTrainingBt4",     // database name

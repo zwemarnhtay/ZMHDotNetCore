@@ -9,12 +9,16 @@ namespace ZMHDotNetCore.WinFormsApp.Queries
     internal class BlogQuery
     {
         public static string InsertQuery { get; } = @"INSERT INTO [dbo].[Tbl_Blog]
-           ([BlogTitle]
-           ,[BlogAuthor]
-           ,[BlogContent])
-     VALUES
-           (@BlogTitle
-           ,@BlogAuthor       
-           ,@BlogContent)";
+                                                    ([BlogTitle]
+                                                    ,[BlogAuthor]
+                                                    ,[BlogContent])
+                                                     VALUES (@BlogTitle
+                                                    ,@BlogAuthor       
+                                                    ,@BlogContent)";
+
+        public static string GetListQuery { get; } = @"SELECT [BlogId], 
+                                            [BlogTitle], 
+                                            [BlogContent],
+                                            [BlogAuthor], FROM [dbo].[Tbl_Blog]";
     }
 }

@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ZMHDotNetCore.RestAPIWithNLayer;
 using ZMHDotNetCore.RestAPIWithNLayer.Models;
 using ZMHDotNetCore.Shared;
+using ZMHDotNetCore.WinFormsApp;
 using ZMHDotNetCore.WinFormsApp.Queries;
 
 namespace ZMHDotNetCore.WindowsFormApp

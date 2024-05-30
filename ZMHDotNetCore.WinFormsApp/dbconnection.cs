@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace ZMHDotNetCore.RestAPIWithNLayer
+namespace ZMHDotNetCore.WinFormsApp
 {
     public class DBConnection
     {

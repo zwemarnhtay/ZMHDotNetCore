@@ -60,7 +60,6 @@
             colId.HeaderText = "Id";
             colId.Name = "colId";
             colId.ReadOnly = true;
-            colId.Visible = false;
             // 
             // colTitle
             // 

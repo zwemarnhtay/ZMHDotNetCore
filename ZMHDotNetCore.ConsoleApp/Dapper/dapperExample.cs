@@ -11,8 +11,15 @@ using ZMHDotNetCore.ConsoleApp.Services;
 
 namespace ZMHDotNetCore.ConsoleApp.Dapper
 {
-    internal class DapperExample
+    public class DapperExample
     {
+        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
+
+        public DapperExample(SqlConnectionStringBuilder sqlConnectionStringBuilder)
+        {
+            _sqlConnectionStringBuilder = sqlConnectionStringBuilder;
+        }
+
         public void run()
         {
             //find(2);
@@ -25,7 +32,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void read()
         {
-            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             var list = db.Query("select * from tbl_blog").ToList(); //var => List<blogDTO>
 
             foreach (var item in list)
@@ -41,7 +48,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void find(int id)
         {
-            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             var item = db.Query("select * from tbl_blog where BlogId = @BlogId", new BlogDTO { BlogId = id }).FirstOrDefault();
 
             if (item == null)
@@ -58,7 +65,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void create(string title, string author, string content)
         {
-            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
 
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
                            ([BlogTitle]
@@ -79,7 +86,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void update(int id, string title, string author, string content)
         {
-            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
 
             string query = @"UPDATE [dbo].[Tbl_Blog]
                            SET [BlogTitle] = @BlogTitle
@@ -99,7 +106,7 @@ namespace ZMHDotNetCore.ConsoleApp.Dapper
 
         private void delete(int id)
         {
-            using IDbConnection db = new SqlConnection(ConnectionStrings.stringBuilder.ConnectionString);
+            using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
 
             string query = @"DELETE FROM [dbo].[Tbl_Blog] WHERE BlogId = @BlogId";
 

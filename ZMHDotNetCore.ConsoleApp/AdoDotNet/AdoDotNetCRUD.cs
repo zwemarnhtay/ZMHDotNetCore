@@ -9,16 +9,23 @@ using System.Data.SqlClient;
 
 namespace ZMHDotNetCore.ConsoleApp.AdoDotNet
 {
-    internal class AdoDotNetCRUD
+    public class AdoDotNetCRUD
     {
 
-        private readonly SqlConnectionStringBuilder _stringBuilder = new SqlConnectionStringBuilder()
+        //private readonly SqlConnectionStringBuilder _stringBuilder = new SqlConnectionStringBuilder()
+        //{
+        //    DataSource = "DESKTOP-1U67J66",     // server name
+        //    InitialCatalog = "DotNetTrainingBt4",     // database name
+        //    UserID = "sa",                         //user name
+        //    Password = "sa@123",                  //server password
+        //};
+
+        private readonly SqlConnectionStringBuilder _stringBuilder;
+
+        public AdoDotNetCRUD(SqlConnectionStringBuilder stringBuilder)
         {
-            DataSource = "DESKTOP-1U67J66",     // server name
-            InitialCatalog = "DotNetTrainingBt4",     // database name
-            UserID = "sa",                         //user name
-            Password = "sa@123",                  //server password
-        };
+            _stringBuilder = stringBuilder;
+        }
 
         public void read()  //void => no return
         {

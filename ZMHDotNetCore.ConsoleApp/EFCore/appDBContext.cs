@@ -9,12 +9,16 @@ using ZMHDotNetCore.ConsoleApp.Services;
 
 namespace ZMHDotNetCore.ConsoleApp.EFCore
 {
-    internal class AppDBContext : DbContext
+    public class AppDBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDBContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer(ConnectionStrings.stringBuilder.ConnectionString);
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(ConnectionStrings.stringBuilder.ConnectionString);
+        //}
         public DbSet<BlogDTO> Blogs { get; set; }
     }
 }

@@ -31,13 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppRef
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.WinFormsApp", "ZMHDotNetCore.WinFormsApp\ZMHDotNetCore.WinFormsApp.csproj", "{6FD7D32E-DE32-4D72-B538-1176F21EB6A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.WinFormsAppSqlInjection", "ZMHDotNetCore.WinFormsAppSqlInjection\ZMHDotNetCore.WinFormsAppSqlInjection.csproj", "{1E07A66D-AFCF-47C2-99BD-FF9C28621F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.WinFormsAppSqlInjection", "ZMHDotNetCore.WinFormsAppSqlInjection\ZMHDotNetCore.WinFormsAppSqlInjection.csproj", "{1E07A66D-AFCF-47C2-99BD-FF9C28621F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.NLayer.DataAccess", "ZMHDotNetCore.NLayer.DataAccess\ZMHDotNetCore.NLayer.DataAccess.csproj", "{15702887-C645-4BA0-8777-300AF049BB8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.NLayer.DataAccess", "ZMHDotNetCore.NLayer.DataAccess\ZMHDotNetCore.NLayer.DataAccess.csproj", "{15702887-C645-4BA0-8777-300AF049BB8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.NLayer.BusinessLogic", "ZMHDotNetCore.NLayer.BusinessLogic\ZMHDotNetCore.NLayer.BusinessLogic.csproj", "{85FFCFC6-4953-49CF-8727-B3ABA35546EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.NLayer.BusinessLogic", "ZMHDotNetCore.NLayer.BusinessLogic\ZMHDotNetCore.NLayer.BusinessLogic.csproj", "{85FFCFC6-4953-49CF-8727-B3ABA35546EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.NLayer.UI", "ZMHDotNetCore.NLayer.UI\ZMHDotNetCore.NLayer.UI.csproj", "{91312A18-F321-4A62-8DC8-C0956DDD9D7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.NLayer.UI", "ZMHDotNetCore.NLayer.UI\ZMHDotNetCore.NLayer.UI.csproj", "{91312A18-F321-4A62-8DC8-C0956DDD9D7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

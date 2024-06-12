@@ -9,12 +9,16 @@ using ZMHDotNetCore.RestAPI.Models;
 
 namespace RestAPI.Db
 {
-    internal class AppDBContext : DbContext
+    public class AppDBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDBContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer(ConnectionStrings.StringBuilder.ConnectionString);
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(ConnectionStrings.StringBuilder.ConnectionString);
+        //}
         public DbSet<BlogModel> Blogs { get; set; }
     }
 }

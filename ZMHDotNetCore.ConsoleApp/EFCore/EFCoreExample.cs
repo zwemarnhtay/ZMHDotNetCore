@@ -7,8 +7,15 @@ using ZMHDotNetCore.ConsoleApp.DTO;
 
 namespace ZMHDotNetCore.ConsoleApp.EFCore
 {
-    internal class EFCoreExample
+    public class EFCoreExample
     {
+        private readonly AppDBContext db;
+
+        public EFCoreExample(AppDBContext db)
+        {
+            this.db = db;
+        }
+
         public void run()
         {
             // find(11);
@@ -20,7 +27,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void read()
         {
-            AppDBContext db = new AppDBContext();
+            //AppDBContext db = new AppDBContext();
             var list = db.Blogs.ToList();
 
             foreach (var item in list)
@@ -35,7 +42,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void find(int id)
         {
-            AppDBContext db = new AppDBContext();
+            //AppDBContext db = new AppDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
             if (item == null)
@@ -52,7 +59,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void create(string title, string author, string content)
         {
-            AppDBContext db = new AppDBContext();
+           // AppDBContext db = new AppDBContext();
 
             var item = new BlogDTO { BlogTitle = title, BlogAuthor = author, BlogContent = content };
 
@@ -64,7 +71,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void update(int id, string title, string author, string content)
         {
-            AppDBContext db = new AppDBContext();
+            //AppDBContext db = new AppDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
             if (item is null)
@@ -83,7 +90,7 @@ namespace ZMHDotNetCore.ConsoleApp.EFCore
 
         private void delete(int id)
         {
-            AppDBContext db = new AppDBContext();
+            //AppDBContext db = new AppDBContext();
             var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
             if (item is null)

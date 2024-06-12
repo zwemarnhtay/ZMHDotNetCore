@@ -10,13 +10,20 @@ namespace ZMHDotNetCore.RestAPI.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
+        //private readonly AppDBContext _context;
+
+        //public BlogController()
+        //{
+        //    _context = new AppDBContext();
+        //}
+        // private readonly appDBContext _context = new appDBContext();
+
         private readonly AppDBContext _context;
 
-        public BlogController()
+        public BlogController(AppDBContext context)
         {
-            _context = new AppDBContext();
+            _context = context;
         }
-        // private readonly appDBContext _context = new appDBContext();
 
         [HttpGet] // declare http method for below function
         public IActionResult Read()

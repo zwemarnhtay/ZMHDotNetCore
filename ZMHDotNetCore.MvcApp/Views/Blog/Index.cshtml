@@ -13,6 +13,8 @@
 <table class="table table-responsive">
     <thead>
         <tr>
+            <td></td>
+            <td></td>
             <td>No.</td>
             <td>Title</td>
             <td>Author</td>
@@ -23,6 +25,16 @@
         @foreach (BlogModel item in Model)
         {
             <tr>
+                <td>
+                    <a class="btn btn-info" href="/Blog/Edit/@item.BlogId">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-danger" href="/Blog/Delete/@item.BlogId">
+                        Delete
+                    </a>
+                </td>
                 <td>@(++count)</td>
                 <td>@item.BlogTitle</td>
                 <td>@item.BlogAuthor</td>

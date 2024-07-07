@@ -74,6 +74,7 @@
             MainMenuStrip = menuStrip1;
             Name = "FrmMain";
             Text = "FrmMain1";
+            Load += FrmMain_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

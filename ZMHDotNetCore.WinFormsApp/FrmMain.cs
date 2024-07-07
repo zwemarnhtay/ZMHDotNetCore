@@ -29,5 +29,10 @@ namespace ZMHDotNetCore.WinFormsApp
             FrmList frm = new FrmList();
             frm.ShowDialog();
         }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

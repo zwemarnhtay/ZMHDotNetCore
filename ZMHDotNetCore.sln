@@ -51,7 +51,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppLog
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.RealTimeChatApp", "ZMHDotNetCore.RealTimeChatApp\ZMHDotNetCore.RealTimeChatApp.csproj", "{331EC6F9-7D3B-4C25-B280-A9D6AA7346D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.RealtimeChartApp", "ZMHDotNetCore.RealtimeChartApp\ZMHDotNetCore.RealtimeChartApp.csproj", "{5404CB5B-E6F4-44B0-B340-2C246786561D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.RealtimeChartApp", "ZMHDotNetCore.RealtimeChartApp\ZMHDotNetCore.RealtimeChartApp.csproj", "{5404CB5B-E6F4-44B0-B340-2C246786561D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppEFCore", "ZMHDotNetCore.ConsoleAppEFCore\ZMHDotNetCore.ConsoleAppEFCore.csproj", "{8B5F9FE5-7262-45D4-90F8-C1EE7949E6B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.ConsoleAppEFCore.Db", "ZMHDotNetCore.ConsoleAppEFCore.Db\ZMHDotNetCore.ConsoleAppEFCore.Db.csproj", "{2B813D88-65C4-4A18-8198-E41D4655B0DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +151,14 @@ Global
 		{5404CB5B-E6F4-44B0-B340-2C246786561D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5404CB5B-E6F4-44B0-B340-2C246786561D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5404CB5B-E6F4-44B0-B340-2C246786561D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B5F9FE5-7262-45D4-90F8-C1EE7949E6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B5F9FE5-7262-45D4-90F8-C1EE7949E6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B5F9FE5-7262-45D4-90F8-C1EE7949E6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B5F9FE5-7262-45D4-90F8-C1EE7949E6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B813D88-65C4-4A18-8198-E41D4655B0DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B813D88-65C4-4A18-8198-E41D4655B0DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B813D88-65C4-4A18-8198-E41D4655B0DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B813D88-65C4-4A18-8198-E41D4655B0DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

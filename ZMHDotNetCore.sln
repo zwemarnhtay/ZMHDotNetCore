@@ -57,7 +57,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppEFC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppEFCore.Db", "ZMHDotNetCore.ConsoleAppEFCore.Db\ZMHDotNetCore.ConsoleAppEFCore.Db.csproj", "{2B813D88-65C4-4A18-8198-E41D4655B0DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.MvcDesignApp", "ZMHDotNetCore.MvcDesignApp\ZMHDotNetCore.MvcDesignApp.csproj", "{78205102-8FE9-4CC6-8AC2-D0BAEC0C068B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.MvcDesignApp", "ZMHDotNetCore.MvcDesignApp\ZMHDotNetCore.MvcDesignApp.csproj", "{78205102-8FE9-4CC6-8AC2-D0BAEC0C068B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.BlazorWasm", "ZMHDotNetCore.BlazorWasm\ZMHDotNetCore.BlazorWasm.csproj", "{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +167,10 @@ Global
 		{78205102-8FE9-4CC6-8AC2-D0BAEC0C068B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78205102-8FE9-4CC6-8AC2-D0BAEC0C068B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78205102-8FE9-4CC6-8AC2-D0BAEC0C068B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

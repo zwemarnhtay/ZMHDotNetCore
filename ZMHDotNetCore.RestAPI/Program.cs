@@ -4,6 +4,22 @@ using ZMHDotNetCore.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//to enable CORS in blazor web app
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: MyAllowSpecificOrigins,
+                    policy =>
+                    {
+                      policy.WithOrigins("https://localhost:7230",
+                                            "http://localhost:5095")
+                             .WithMethods("GET", "POST", "PUT", "PATCH", "DELETE")
+                             .AllowAnyHeader();
+                    });
+});
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -21,8 +37,8 @@ builder.Services.AddScoped(n => new DapperServices(connectionString));
 
 builder.Services.AddDbContext<AppDBContext>(opt =>
 {
-    opt.UseSqlServer(connectionString);
-}, 
+  opt.UseSqlServer(connectionString);
+},
 ServiceLifetime.Transient,
 ServiceLifetime.Transient);
 
@@ -31,11 +47,14 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
+
+//for CORS enable
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

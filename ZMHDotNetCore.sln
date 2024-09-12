@@ -59,7 +59,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.ConsoleAppEFC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.MvcDesignApp", "ZMHDotNetCore.MvcDesignApp\ZMHDotNetCore.MvcDesignApp.csproj", "{78205102-8FE9-4CC6-8AC2-D0BAEC0C068B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZMHDotNetCore.BlazorWasm", "ZMHDotNetCore.BlazorWasm\ZMHDotNetCore.BlazorWasm.csproj", "{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.BlazorWasm", "ZMHDotNetCore.BlazorWasm\ZMHDotNetCore.BlazorWasm.csproj", "{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZMHDotNetCore.BlazorWasm2", "ZMHDotNetCore.BlazorWasm2\ZMHDotNetCore.BlazorWasm2.csproj", "{264F1E8E-E2B0-4130-81BE-4A3785AE474B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,10 @@ Global
 		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18DF7B13-E4A3-4141-893E-9FEFE7ABD7D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264F1E8E-E2B0-4130-81BE-4A3785AE474B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264F1E8E-E2B0-4130-81BE-4A3785AE474B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264F1E8E-E2B0-4130-81BE-4A3785AE474B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264F1E8E-E2B0-4130-81BE-4A3785AE474B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
